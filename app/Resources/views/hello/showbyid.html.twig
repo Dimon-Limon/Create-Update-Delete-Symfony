@@ -1,0 +1,11 @@
+{% extends 'hello/index.html.twig' %}
+
+{% block body%}
+{{ form_start(form) }}
+      {{form_row(form.title)}}
+      {{form_row(form.text)}}
+      {{form_row(form.number)}}
+      {{form_row(form.save, {'attr': {'class': 'btn btn-success'}})}}
+    <!-- {{ form_widget(form) }} -->
+    {{ form_end(form) }}
+ {% endblock %}

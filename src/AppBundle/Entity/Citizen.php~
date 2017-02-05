@@ -1,0 +1,53 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Citizen
+ *
+ * @ORM\Table(name="citizen", indexes={@ORM\Index(name="city_id", columns={"city_id"}), @ORM\Index(name="friend", columns={"friend"})})
+ * @ORM\Entity
+ */
+class Citizen
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var \AppBundle\Entity\City
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\City")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="city_id", referencedColumnName="id")
+     * })
+     */
+    private $city;
+
+    /**
+     * @var \AppBundle\Entity\Citizen
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Citizen")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="friend", referencedColumnName="id")
+     * })
+     */
+    private $friend;
+
+
+}
+
